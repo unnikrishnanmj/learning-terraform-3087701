@@ -43,3 +43,13 @@ resource "aws_security_group_rule" "web_http_in" {
   protocol  =  "tcp"
   aws_security_group_id  =  aws_security_group.web.id
 }
+
+resource "aws_security_group_rule" "web_http_out" {
+  type  =  "ingress"
+  from_port  =  0
+  to_port  =  0
+  
+  cidr_blocks  = ["0.0.0.0/0"]
+  protocol  =  "-1"
+  aws_security_group_id  =  aws_security_group.web.id
+}
