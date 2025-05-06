@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "web_http_in" {
   
   cidr_blocks  = ["0.0.0.0/0"]
   protocol  =  "tcp"
-  aws_security_group_id  =  aws_security_group.web.id
+  security_group_id  =  aws_security_group.web.id
 }
 
 resource "aws_security_group_rule" "web_http_out" {
@@ -51,5 +51,5 @@ resource "aws_security_group_rule" "web_http_out" {
   
   cidr_blocks  = ["0.0.0.0/0"]
   protocol  =  "-1"
-  aws_security_group_id  =  aws_security_group.web.id
+  security_group_id  =  aws_security_group.web.id
 }
