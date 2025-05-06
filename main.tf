@@ -31,7 +31,7 @@ resource "aws_security_group" "web"  {
   name  = "web"
   desc  = "allowed http inbound and outbound everthing"
   
-  vpc.id  = data.aws_vpc.default.default.id
+  vpc_id  = data.aws_vpc.default.default.id
 }
 
 resource "aws_security_group_rule" "web_http_in" {
@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "web_http_in" {
   from_port  =  8080
   to_port  =  80
   
-  cidr_blocks  = [0.0.0.0/0]
+  cidr_blocks  = ["0.0.0.0/0"]
   protocol  =  "tcp"
-  aws_security_group.id  =  aws_security_group.web.id
+  aws_security_group_id  =  aws_security_group.web.id
 }
