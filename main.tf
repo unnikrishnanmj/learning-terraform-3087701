@@ -21,7 +21,7 @@ data "aws_vpc" "default"  {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  vpc_security_groups_ids = [aws_security_group.id]
+  vpc_security_groups_ids = [aws_security_group.web.id]
   tags = {
     Name = "LI-TF-Course"
   }
@@ -34,7 +34,7 @@ resource "aws_security_group" "web"  {
   vpc.id  = data.aws_vpc.default.default.id
 }
 
-resource "aws_security_group_rule" "web_http_in"{
+resource "aws_security_group_rule" "web_http_in" {
   type  =  "ingress"
   from_port  =  8080
   to_port  =  80
